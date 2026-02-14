@@ -1,0 +1,35 @@
+# VULTR SSH Configuration for AdaptNav Training - TEST VERSION
+# This configuration uses SSH keys instead of API keys
+
+# SSH connection settings
+ssh_settings:
+  timeout: 30
+  retries: 3
+  strict_host_checking: false
+
+# Training configuration
+training:
+  sync_code: true
+  install_dependencies: true
+  python_command: "python3"
+  
+# List of VULTR instances (manually created)
+instances:
+  # Replace YOUR_INSTANCE_IP with the actual IP from your VULTR dashboard
+  - name: "adaptnav-test"
+    ip_address: "YOUR_INSTANCE_IP"  # ← REPLACE THIS WITH YOUR ACTUAL IP
+    ssh_key_path: "~/.ssh/vultr_key"
+    username: "root"
+    role: "master"
+
+# Training parameters for single instance
+distributed_training:
+  total_timesteps: 100000  # Smaller for testing
+  parallel_envs: 2
+  batch_size: 512
+  learning_rate: 3e-4
+  
+# Monitoring settings
+monitoring:
+  check_interval: 30  # seconds
+  log_level: "INFO"

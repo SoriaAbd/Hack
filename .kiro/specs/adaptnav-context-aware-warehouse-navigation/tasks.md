@@ -226,25 +226,25 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - Publish velocity commands to /cmd_vel_raw topic
     - _Requirements: 5.2, 5.5_
 
-  - [~] 9.5 Write property test for observation structure
+  - [ ] 9.5 Write property test for observation structure
     - **Property 15: Observation Structure**
     - **Validates: Requirements 5.1**
 
-  - [~] 9.6 Write property test for action output structure
+  - [ ] 9.6 Write property test for action output structure
     - **Property 16: Action Output Structure**
     - **Validates: Requirements 5.2**
 
-  - [~] 9.7 Write property test for PPO inference latency
+  - [ ] 9.7 Write property test for PPO inference latency
     - **Property 30: PPO Inference Latency**
     - **Validates: Requirements 11.3**
 
-  - [~] 9.8 Write unit tests for PPO observation construction
+  - [ ] 9.8 Write unit tests for PPO observation construction
     - Test observation vector dimensions
     - Test normalization of sensor data
     - Test goal direction computation
     - _Requirements: 5.1_
 
-- [~] 10. Checkpoint - Ensure planning and RL components work independently
+- [ ] 10. Checkpoint - Ensure planning and RL components work independently
   - Ensure all tests pass, ask the user if questions arise.
 
 
@@ -270,31 +270,31 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - Override unsafe commands with safer alternatives (reduce speed or stop)
     - _Requirements: 6.3_
 
-  - [~] 11.4 Write property test for collision zone enforcement
+  - [ ] 11.4 Write property test for collision zone enforcement
     - **Property 19: Collision Zone Enforcement**
     - **Validates: Requirements 6.1**
 
-  - [~] 11.5 Write property test for emergency stop response
+  - [ ] 11.5 Write property test for emergency stop response
     - **Property 20: Emergency Stop Response**
     - **Validates: Requirements 6.2**
 
-  - [~] 11.6 Write property test for safety override
+  - [ ] 11.6 Write property test for safety override
     - **Property 21: Safety Override**
     - **Validates: Requirements 6.3**
 
-  - [~] 11.7 Write property test for clearance time enforcement
+  - [ ] 11.7 Write property test for clearance time enforcement
     - **Property 22: Clearance Time Enforcement**
     - **Validates: Requirements 6.4**
 
-  - [~] 11.8 Write property test for velocity limit enforcement
+  - [ ] 11.8 Write property test for velocity limit enforcement
     - **Property 23: Velocity Limit Enforcement**
     - **Validates: Requirements 6.5**
 
-  - [~] 11.9 Write property test for safety evaluation latency
+  - [ ] 11.9 Write property test for safety evaluation latency
     - **Property 31: Safety Evaluation Latency**
     - **Validates: Requirements 11.4**
 
-  - [~] 11.10 Write unit tests for safety controller
+  - [ ] 11.10 Write unit tests for safety controller
     - Test collision zone detection with various obstacle positions
     - Test velocity clamping with out-of-range commands
     - Test emergency stop triggering and recovery
@@ -323,25 +323,25 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - Detect goal reached condition (within 0.2m, velocity < 0.1 m/s)
     - _Requirements: 5.5_
 
-  - [~] 12.4 Add replanning trigger logic
+  - [ ] 12.4 Add replanning trigger logic
     - Monitor obstacles relative to planned path
     - Trigger replanning when obstacle within 0.5m of any waypoint
     - Implement replanning cooldown (don't replan more than once per second)
     - _Requirements: 3.4_
 
-  - [~] 12.5 Write property test for replanning trigger
+  - [ ] 12.5 Write property test for replanning trigger
     - **Property 9: Replanning Trigger**
     - **Validates: Requirements 3.4**
 
-  - [~] 12.6 Write property test for hybrid navigation integration
+  - [ ] 12.6 Write property test for hybrid navigation integration
     - **Property 18: Hybrid Navigation Integration**
     - **Validates: Requirements 5.5**
 
-  - [~] 12.7 Write property test for control loop frequency
+  - [ ] 12.7 Write property test for control loop frequency
     - **Property 28: Control Loop Frequency**
     - **Validates: Requirements 11.1**
 
-  - [~] 12.8 Write unit tests for navigation controller
+  - [ ] 12.8 Write unit tests for navigation controller
     - Test state machine transitions
     - Test goal reached detection
     - Test replanning trigger conditions
@@ -375,23 +375,23 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - Implement real-time updates via WebSocket
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7_
 
-  - [~] 13.4 Write property test for obstacle visualization completeness
+  - [ ] 13.4 Write property test for obstacle visualization completeness
     - **Property 24: Obstacle Visualization Completeness**
     - **Validates: Requirements 7.2**
 
-  - [~] 13.5 Write property test for state display
+  - [ ] 13.5 Write property test for state display
     - **Property 25: State Display**
     - **Validates: Requirements 7.4**
 
-  - [~] 13.6 Write property test for dashboard update frequency
+  - [ ] 13.6 Write property test for dashboard update frequency
     - **Property 26: Dashboard Update Frequency**
     - **Validates: Requirements 7.6**
 
-  - [~] 13.7 Write property test for explainability display
+  - [ ] 13.7 Write property test for explainability display
     - **Property 27: Explainability Display**
     - **Validates: Requirements 7.7**
 
-- [~] 14. Checkpoint - Ensure complete system integration
+- [ ] 14. Checkpoint - Ensure complete system integration
   - Ensure all tests pass, ask the user if questions arise.
 
 
@@ -423,7 +423,7 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - _Requirements: 12.1_
 
 - [ ] 16. Implement training and evaluation scripts
-  - [~] 16.1 Create PPO training script
+  - [ ] 16.1 Create PPO training script
     - Set up training environment with diverse scenarios
     - Implement training loop with Stable Baselines3
     - Log training metrics to TensorBoard
@@ -431,73 +431,73 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - Implement early stopping based on success rate
     - _Requirements: 10.1, 10.2, 10.3, 10.5_
 
-  - [~] 16.2 Create evaluation script
+  - [ ] 16.2 Create evaluation script
     - Load trained model
     - Run evaluation on benchmark scenarios
     - Compute success rate, collision rate, path efficiency
     - Generate evaluation report with statistics
     - _Requirements: 10.4_
 
-  - [~] 16.3 Add scenario generation for training
+  - [ ] 16.3 Add scenario generation for training
     - Implement random warehouse layout generation
     - Implement random obstacle configuration generation
     - Implement random start/goal position generation
     - Ensure diversity in training scenarios
     - _Requirements: 10.2_
 
-  - [~] 16.4 Write property test for training improvement
+  - [ ] 16.4 Write property test for training improvement
     - **Property 17: Training Improvement**
     - **Validates: Requirements 5.3**
 
-  - [~] 16.5 Write property test for scenario diversity
+  - [ ] 16.5 Write property test for scenario diversity
     - **Property 33: Scenario Diversity**
     - **Validates: Requirements 10.2**
 
-  - [~] 16.6 Write property test for training metrics logging
+  - [ ] 16.6 Write property test for training metrics logging
     - **Property 34: Training Metrics Logging**
     - **Validates: Requirements 10.3**
 
-  - [~] 16.7 Write property test for model persistence round-trip
+  - [ ] 16.7 Write property test for model persistence round-trip
     - **Property 35: Model Persistence Round-Trip**
     - **Validates: Requirements 10.5**
 
 - [ ] 17. Implement error handling and recovery
-  - [~] 17.1 Add planning failure handling
+  - [ ] 17.1 Add planning failure handling
     - Detect planning failures and log diagnostics
     - Publish failure status to navigation state
     - Notify user via dashboard
     - Implement retry logic with timeout
     - _Requirements: 3.3_
 
-  - [~] 17.2 Add sensor failure handling
+  - [ ] 17.2 Add sensor failure handling
     - Detect sensor timeouts (>1 second)
     - Use last known valid data for up to 2 seconds
     - Trigger emergency stop if timeout exceeds 2 seconds
     - Log warnings and notify dashboard
     - _Requirements: 2.3_
 
-  - [~] 17.3 Add obstacle detector failure handling
+  - [ ] 17.3 Add obstacle detector failure handling
     - Detect detector timeouts (>200ms)
     - Assume worst-case (obstacles everywhere) on failure
     - Trigger safety stop
     - Attempt automatic restart of detector node
     - _Requirements: 4.4_
 
-  - [~] 17.4 Add PPO agent failure handling
+  - [ ] 17.4 Add PPO agent failure handling
     - Detect inference timeouts (>100ms) or NaN/Inf outputs
     - Fall back to pure path-following behavior
     - Clamp invalid actions to zero velocity
     - Continue in degraded mode and log error
     - _Requirements: 5.2, 11.3_
 
-  - [~] 17.5 Add communication failure handling
+  - [ ] 17.5 Add communication failure handling
     - Detect ROS 2 topic timeouts
     - Attempt reconnection for up to 5 seconds
     - Trigger emergency stop if reconnection fails
     - Log communication errors
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
 
-  - [~] 17.6 Write unit tests for error handling
+  - [ ] 17.6 Write unit tests for error handling
     - Test planning failure scenarios
     - Test sensor timeout handling
     - Test detector failure recovery
@@ -506,54 +506,54 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
     - _Requirements: 3.3, 2.3, 4.4, 5.2, 8.1_
 
 - [ ] 18. Add performance monitoring and optimization
-  - [~] 18.1 Implement latency monitoring
+  - [ ] 18.1 Implement latency monitoring
     - Add timing instrumentation to all components
     - Log processing latencies for detector, planner, PPO, safety
     - Publish latency metrics to dashboard
     - Alert if latencies exceed requirements
     - _Requirements: 11.1, 11.2, 11.3, 11.4_
 
-  - [~] 18.2 Implement frequency monitoring
+  - [ ] 18.2 Implement frequency monitoring
     - Monitor publishing frequencies for all topics
     - Log frequency metrics
     - Alert if frequencies drop below requirements
     - _Requirements: 2.3, 11.1_
 
-  - [~] 18.3 Write property test for obstacle detection latency
+  - [ ] 18.3 Write property test for obstacle detection latency
     - **Property 29: Obstacle Detection Latency**
     - **Validates: Requirements 11.2**
 
-  - [~] 18.4 Write property test for real-time performance
+  - [ ] 18.4 Write property test for real-time performance
     - **Property 32: Real-Time Performance**
     - **Validates: Requirements 11.5**
 
 - [ ] 19. Create documentation and demo setup
-  - [~] 19.1 Write setup documentation
+  - [ ] 19.1 Write setup documentation
     - Document installation steps (ROS 2, dependencies, simulation)
     - Document build instructions
     - Document configuration options
     - _Requirements: 12.4_
 
-  - [~] 19.2 Write training documentation
+  - [ ] 19.2 Write training documentation
     - Document training process and hyperparameters
     - Document how to customize scenarios
     - Document evaluation process
     - _Requirements: 12.4_
 
-  - [~] 19.3 Write demonstration documentation
+  - [ ] 19.3 Write demonstration documentation
     - Document how to run demo scenarios
     - Document dashboard usage
     - Document troubleshooting common issues
     - _Requirements: 12.4_
 
-  - [~] 19.4 Create demo mode for dashboard
+  - [ ] 19.4 Create demo mode for dashboard
     - Add enhanced visualizations for presentation
     - Add preset camera angles
     - Add performance statistics overlay
     - Add "replay" functionality for recorded runs
     - _Requirements: 12.3_
 
-  - [~] 19.5 Create quick-start launch script
+  - [ ] 19.5 Create quick-start launch script
     - Single command to launch complete system
     - Auto-load default configuration
     - Auto-start demo scenario
@@ -561,35 +561,35 @@ The implementation uses Python 3.10+ with ROS 2 Humble, Stable Baselines3 for RL
 
 
 - [ ] 20. Integration testing and validation
-  - [~] 20.1 Write end-to-end integration tests
+  - [ ] 20.1 Write end-to-end integration tests
     - Test complete navigation from start to goal in simple scenario
     - Test multi-obstacle avoidance scenario
     - Test safety stop and recovery scenario
     - Test replanning scenario
     - _Requirements: 3.1, 3.4, 4.1, 5.5, 6.2, 6.4_
 
-  - [~] 20.2 Write property test for simulation real-time performance
+  - [ ] 20.2 Write property test for simulation real-time performance
     - **Property 36: Simulation Real-Time Performance**
     - **Validates: Requirements 9.4**
 
-  - [~] 20.3 Write property test for demonstration success rate
+  - [ ] 20.3 Write property test for demonstration success rate
     - **Property 37: Demonstration Success Rate**
     - **Validates: Requirements 12.2**
 
-  - [~] 20.4 Run performance benchmarks
+  - [ ] 20.4 Run performance benchmarks
     - Measure latencies for all components
     - Measure publishing frequencies
     - Measure memory usage over 1000 episodes
     - Verify all performance requirements are met
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5_
 
-  - [~] 20.5 Run demonstration scenarios
+  - [ ] 20.5 Run demonstration scenarios
     - Run benchmark_easy 20 times and verify 80%+ success rate
     - Run benchmark_medium 20 times and verify 80%+ success rate
     - Run benchmark_hard 20 times and verify 80%+ success rate
     - _Requirements: 12.1, 12.2_
 
-- [~] 21. Final checkpoint and system validation
+- [ ] 21. Final checkpoint and system validation
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

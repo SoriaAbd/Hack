@@ -1,0 +1,61 @@
+# VULTR SSH Configuration for AdaptNav Training
+# This configuration uses SSH keys instead of API keys
+
+# SSH connection settings
+ssh_settings:
+  timeout: 30
+  retries: 3
+  strict_host_checking: false
+
+# Training configuration
+training:
+  sync_code: true
+  install_dependencies: true
+  python_command: "python3"
+  
+# List of VULTR instances (manually created)
+instances:
+  # Example instance configuration
+  # You need to create these instances manually in VULTR dashboard
+  
+  - name: "adaptnav-master"
+    ip_address: "YOUR_INSTANCE_IP_1"  # Replace with actual IP
+    ssh_key_path: "~/.ssh/vultr_key"  # Path to your SSH private key
+    username: "root"
+    role: "master"
+    
+  - name: "adaptnav-worker-1"
+    ip_address: "YOUR_INSTANCE_IP_2"  # Replace with actual IP
+    ssh_key_path: "~/.ssh/vultr_key"  # Path to your SSH private key
+    username: "root"
+    role: "worker"
+    
+  - name: "adaptnav-worker-2"
+    ip_address: "YOUR_INSTANCE_IP_3"  # Replace with actual IP
+    ssh_key_path: "~/.ssh/vultr_key"  # Path to your SSH private key
+    username: "root"
+    role: "worker"
+
+# Instance specifications (for reference)
+instance_specs:
+  master:
+    recommended_type: "vc2-8c-32gb"
+    min_ram: "16GB"
+    min_cpu: "4 cores"
+    
+  worker:
+    recommended_type: "vc2-4c-16gb"
+    min_ram: "8GB"
+    min_cpu: "2 cores"
+
+# Training parameters for distributed setup
+distributed_training:
+  total_timesteps: 5000000
+  parallel_envs: 8
+  batch_size: 4096
+  learning_rate: 3e-4
+  
+# Monitoring settings
+monitoring:
+  check_interval: 30  # seconds
+  log_level: "INFO"
