@@ -1,0 +1,39 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting mujoco
+  Downloading mujoco-3.5.0.tar.gz (912 kB)
+     ---------------------------------------- 912.5/912.5 kB 416.6 kB/s  0:00:01
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting absl-py (from mujoco)
+  Downloading absl_py-2.4.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting etils[epath] (from mujoco)
+  Downloading etils-1.13.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting glfw (from mujoco)
+  Downloading glfw-2.10.0-py2.py27.py3.py30.py31.py32.py33.py34.py35.py36.py37.py38.py39.py310.py311.py312.py313.py314-none-win_amd64.whl.metadata (5.4 kB)
+Requirement already satisfied: numpy in C:\Users\PC\AppData\Roaming\Python\Python314\site-packages (from mujoco) (2.4.2)
+Collecting pyopengl (from mujoco)
+  Downloading pyopengl-3.1.10-py3-none-any.whl.metadata (3.3 kB)
+Collecting fsspec (from etils[epath]->mujoco)
+  Using cached fsspec-2026.2.0-py3-none-any.whl.metadata (10 kB)
+Collecting importlib_resources (from etils[epath]->mujoco)
+  Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: typing_extensions in C:\Users\PC\AppData\Roaming\Python\Python314\site-packages (from etils[epath]->mujoco) (4.15.0)
+Collecting zipp (from etils[epath]->mujoco)
+  Using cached zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+Downloading absl_py-2.4.0-py3-none-any.whl (135 kB)
+Downloading etils-1.13.0-py3-none-any.whl (170 kB)
+Using cached fsspec-2026.2.0-py3-none-any.whl (202 kB)
+Downloading glfw-2.10.0-py2.py27.py3.py30.py31.py32.py33.py34.py35.py36.py37.py38.py39.py310.py311.py312.py313.py314-none-win_amd64.whl (559 kB)
+   ---------------------------------------- 559.5/559.5 kB 589.3 kB/s  0:00:00
+Downloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+Downloading pyopengl-3.1.10-py3-none-any.whl (3.2 MB)
+   ---------------------------------------- 3.2/3.2 MB 805.9 kB/s  0:00:03
+Using cached zipp-3.23.0-py3-none-any.whl (10 kB)
+Building wheels for collected packages: mujoco
+  Building wheel for mujoco (pyproject.toml): started
+  Building wheel for mujoco (pyproject.toml): finished with status 'error'
+Failed to build mujoco

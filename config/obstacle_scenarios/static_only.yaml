@@ -1,0 +1,33 @@
+# Static Only Obstacle Scenario
+# No dynamic obstacles - only static warehouse structures
+
+scenario:
+  name: "Static Only"
+  description: "Navigation with only static obstacles (walls, shelves, columns)"
+  difficulty: "easy"
+  
+  # Dynamic obstacles configuration
+  dynamic_obstacles: []
+  
+  # Scenario parameters
+  duration: 300.0  # seconds (5 minutes)
+  success_criteria:
+    goal_reached_tolerance: 0.2  # meters
+    time_limit: 60.0  # seconds per goal
+    
+  # Performance metrics to track
+  metrics:
+    - "path_length"
+    - "time_to_goal"
+    - "path_efficiency"
+    - "collision_count"
+    - "planning_time"
+    
+  # Test goals sequence
+  goal_sequence:
+    - position: [9.0, 9.0, 0.0]
+      timeout: 60.0
+    - position: [1.0, 9.0, 0.0]
+      timeout: 60.0
+    - position: [9.0, 1.0, 0.0]
+      timeout: 60.0

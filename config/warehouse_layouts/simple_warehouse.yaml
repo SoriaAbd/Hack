@@ -1,0 +1,48 @@
+# Simple Warehouse Layout Configuration
+# 10m x 10m warehouse with minimal obstacles
+
+warehouse:
+  name: "Simple Warehouse"
+  dimensions:
+    width: 10.0   # meters
+    height: 10.0  # meters
+    
+  # Map resolution for occupancy grid
+  resolution: 0.1  # meters per pixel
+  
+  # Origin point (bottom-left corner)
+  origin: [0.0, 0.0, 0.0]
+  
+  # Static obstacles (walls, shelves, columns)
+  static_obstacles:
+    # Outer walls
+    - type: "wall"
+      points: [[0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0]]
+      thickness: 0.2
+      
+    # Central shelf unit
+    - type: "shelf"
+      center: [5.0, 5.0]
+      width: 2.0
+      height: 1.0
+      orientation: 0.0  # radians
+      
+  # Spawn points for robot and obstacles
+  spawn_points:
+    robot:
+      position: [1.0, 1.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]  # quaternion
+      
+    goal_positions:
+      - [9.0, 9.0, 0.0]
+      - [9.0, 1.0, 0.0]
+      - [1.0, 9.0, 0.0]
+      
+  # Free space regions for navigation
+  free_space_regions:
+    - name: "main_area"
+      bounds: [[0.5, 0.5], [9.5, 9.5]]
+      
+# Occupancy grid file (if using pre-generated map)
+map_file: "maps/simple_warehouse.pgm"
+map_metadata_file: "maps/simple_warehouse.yaml"

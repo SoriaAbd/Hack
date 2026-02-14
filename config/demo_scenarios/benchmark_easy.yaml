@@ -1,0 +1,114 @@
+# Benchmark Easy Demonstration Scenario
+# Simple navigation task for showcasing basic capabilities
+
+demo_scenario:
+  name: "Benchmark Easy"
+  description: "Simple navigation demonstration with minimal obstacles"
+  category: "benchmark"
+  difficulty: "easy"
+  estimated_duration: 120  # seconds
+  
+  # Environment configuration
+  environment:
+    warehouse_layout: "simple_warehouse.yaml"
+    obstacle_scenario: "single_worker.yaml"
+    
+  # Robot starting configuration
+  robot_start:
+    position: [1.0, 1.0, 0.0]
+    orientation: [0.0, 0.0, 0.0, 1.0]  # quaternion (facing +x)
+    
+  # Demonstration goals sequence
+  goals:
+    - id: 1
+      position: [9.0, 9.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 60.0
+      description: "Navigate to far corner"
+      showcase_features:
+        - "basic_path_planning"
+        - "obstacle_avoidance"
+        - "safety_zones"
+        
+    - id: 2
+      position: [1.0, 9.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 45.0
+      description: "Move to opposite corner"
+      showcase_features:
+        - "replanning"
+        - "dynamic_obstacle_tracking"
+        
+    - id: 3
+      position: [1.0, 1.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 30.0
+      description: "Return to start"
+      showcase_features:
+        - "goal_reaching"
+        - "path_efficiency"
+  
+  # Success criteria for demonstration
+  success_criteria:
+    goal_tolerance: 0.2  # meters
+    orientation_tolerance: 0.2  # radians
+    collision_tolerance: 0  # No collisions allowed
+    time_efficiency_threshold: 0.8  # 80% of optimal time
+    
+  # Key performance indicators to highlight
+  kpis:
+    - name: "Success Rate"
+      target: ">= 95%"
+      description: "Percentage of goals reached successfully"
+      
+    - name: "Path Efficiency"
+      target: ">= 85%"
+      description: "Actual path length vs optimal path length"
+      
+    - name: "Safety Events"
+      target: "= 0"
+      description: "Number of collisions or safety violations"
+      
+    - name: "Average Speed"
+      target: ">= 0.6 m/s"
+      description: "Average robot velocity during navigation"
+      
+  # Demonstration script for presentation
+  presentation:
+    intro_text: "This demonstration shows AdaptNav's basic navigation capabilities in a simple warehouse environment with one moving worker."
+    
+    highlights:
+      - timestamp: 10.0
+        text: "Robot plans initial path using A* algorithm"
+        camera_focus: "global_plan"
+        
+      - timestamp: 25.0
+        text: "PPO agent handles local obstacle avoidance"
+        camera_focus: "robot_and_obstacles"
+        
+      - timestamp: 40.0
+        text: "Safety controller maintains collision-free buffer"
+        camera_focus: "safety_zones"
+        
+      - timestamp: 70.0
+        text: "System replans when worker blocks path"
+        camera_focus: "replanning"
+        
+    outro_text: "AdaptNav successfully navigated to all goals while maintaining safety and efficiency."
+    
+  # Camera positions for optimal viewing
+  camera_positions:
+    overview:
+      position: [5.0, 5.0, 15.0]
+      target: [5.0, 5.0, 0.0]
+      description: "Full warehouse overview"
+      
+    robot_focus:
+      position: [2.0, 2.0, 8.0]
+      target: [0.0, 0.0, 0.0]  # Will track robot
+      description: "Close-up robot view"
+      
+    obstacle_interaction:
+      position: [6.0, 6.0, 10.0]
+      target: [5.0, 5.0, 0.0]
+      description: "Robot-obstacle interaction view"

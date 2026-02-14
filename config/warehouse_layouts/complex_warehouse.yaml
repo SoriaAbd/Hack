@@ -1,0 +1,110 @@
+# Complex Warehouse Layout Configuration
+# 50m x 50m warehouse with dense obstacles and narrow passages
+
+warehouse:
+  name: "Complex Warehouse"
+  dimensions:
+    width: 50.0   # meters
+    height: 50.0  # meters
+    
+  # Map resolution for occupancy grid
+  resolution: 0.05  # meters per pixel (higher resolution for complex layout)
+  
+  # Origin point (bottom-left corner)
+  origin: [0.0, 0.0, 0.0]
+  
+  # Static obstacles (walls, shelves, columns)
+  static_obstacles:
+    # Outer walls
+    - type: "wall"
+      points: [[0.0, 0.0], [50.0, 0.0], [50.0, 50.0], [0.0, 50.0], [0.0, 0.0]]
+      thickness: 0.4
+      
+    # Dense shelf grid
+    - type: "shelf_grid"
+      start: [5.0, 5.0]
+      end: [45.0, 45.0]
+      shelf_width: 8.0
+      shelf_height: 1.5
+      aisle_width: 2.5
+      cross_aisle_width: 3.0
+      rows: 4
+      columns: 4
+      
+    # Narrow passages
+    - type: "narrow_passage"
+      start: [12.5, 0.0]
+      end: [12.5, 5.0]
+      width: 1.2
+      
+    - type: "narrow_passage"
+      start: [25.0, 45.0]
+      end: [25.0, 50.0]
+      width: 1.2
+      
+    - type: "narrow_passage"
+      start: [37.5, 0.0]
+      end: [37.5, 5.0]
+      width: 1.2
+      
+    # Loading dock area
+    - type: "loading_dock"
+      center: [47.0, 25.0]
+      width: 6.0
+      height: 10.0
+      orientation: 0.0
+      
+    # Office area
+    - type: "office_area"
+      center: [5.0, 45.0]
+      width: 8.0
+      height: 8.0
+      
+    # Support columns (many)
+    - type: "column_grid"
+      start: [10.0, 10.0]
+      end: [40.0, 40.0]
+      spacing: 10.0
+      radius: 0.4
+      
+  # Spawn points for robot and obstacles
+  spawn_points:
+    robot:
+      position: [2.0, 2.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]  # quaternion
+      
+    goal_positions:
+      - [48.0, 48.0, 0.0]
+      - [48.0, 2.0, 0.0]
+      - [2.0, 48.0, 0.0]
+      - [25.0, 25.0, 0.0]
+      - [47.0, 25.0, 0.0]  # Loading dock
+      - [5.0, 45.0, 0.0]   # Office area
+      - [12.5, 2.5, 0.0]   # Near narrow passage
+      
+  # Free space regions for navigation
+  free_space_regions:
+    - name: "main_aisles"
+      bounds: [[1.0, 1.0], [49.0, 49.0]]
+    - name: "central_corridor"
+      bounds: [[23.0, 1.0], [27.0, 49.0]]
+    - name: "cross_corridor"
+      bounds: [[1.0, 23.0], [49.0, 27.0]]
+      
+  # Challenging navigation areas
+  challenge_areas:
+    - name: "narrow_passages"
+      difficulty: "high"
+      areas:
+        - [[12.0, 0.0], [13.0, 5.0]]
+        - [[24.5, 45.0], [25.5, 50.0]]
+        - [[37.0, 0.0], [38.0, 5.0]]
+        
+    - name: "dense_shelf_area"
+      difficulty: "medium"
+      areas:
+        - [[5.0, 5.0], [45.0, 45.0]]
+        
+# Occupancy grid file (if using pre-generated map)
+map_file: "maps/complex_warehouse.pgm"
+map_metadata_file: "maps/complex_warehouse.yaml"

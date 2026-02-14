@@ -1,0 +1,242 @@
+# Crowded Warehouse Scenario
+# High-density dynamic obstacles simulating busy warehouse operations
+
+scenario:
+  name: "Crowded Warehouse"
+  description: "Navigation in a busy warehouse with many dynamic obstacles"
+  difficulty: "hard"
+  
+  # Dynamic obstacles configuration
+  dynamic_obstacles:
+    # Multiple workers - shift change scenario
+    - id: 1
+      type: "worker"
+      classification: "worker"
+      radius: 0.5
+      height: 1.8
+      mass: 70.0
+      initial_position: [5.0, 5.0, 0.0]
+      motion_pattern:
+        type: "shift_pattern"
+        work_area: [[3.0, 3.0], [8.0, 8.0]]
+        break_area: [25.0, 25.0, 0.0]
+        shift_duration: 180.0
+        break_duration: 30.0
+        max_velocity: 1.5
+      behavior:
+        awareness_radius: 2.0
+        predictability: 0.8
+        
+    - id: 2
+      type: "worker"
+      classification: "worker"
+      radius: 0.5
+      height: 1.8
+      mass: 75.0
+      initial_position: [10.0, 5.0, 0.0]
+      motion_pattern:
+        type: "shift_pattern"
+        work_area: [[8.0, 3.0], [13.0, 8.0]]
+        break_area: [25.0, 25.0, 0.0]
+        shift_duration: 180.0
+        break_duration: 30.0
+        max_velocity: 1.3
+      behavior:
+        awareness_radius: 2.5
+        predictability: 0.7
+        
+    - id: 3
+      type: "worker"
+      classification: "worker"
+      radius: 0.5
+      height: 1.8
+      mass: 68.0
+      initial_position: [5.0, 15.0, 0.0]
+      motion_pattern:
+        type: "shift_pattern"
+        work_area: [[3.0, 13.0], [8.0, 18.0]]
+        break_area: [25.0, 25.0, 0.0]
+        shift_duration: 180.0
+        break_duration: 30.0
+        max_velocity: 1.4
+      behavior:
+        awareness_radius: 2.2
+        predictability: 0.9
+        
+    - id: 4
+      type: "worker"
+      classification: "worker"
+      radius: 0.5
+      height: 1.8
+      mass: 72.0
+      initial_position: [15.0, 5.0, 0.0]
+      motion_pattern:
+        type: "shift_pattern"
+        work_area: [[13.0, 3.0], [18.0, 8.0]]
+        break_area: [25.0, 25.0, 0.0]
+        shift_duration: 180.0
+        break_duration: 30.0
+        max_velocity: 1.2
+      behavior:
+        awareness_radius: 2.8
+        predictability: 0.6
+        
+    # Multiple forklifts - busy loading operations
+    - id: 5
+      type: "forklift"
+      classification: "forklift"
+      radius: 1.0
+      height: 2.5
+      mass: 2000.0
+      initial_position: [27.0, 10.0, 0.0]
+      motion_pattern:
+        type: "loading_cycle"
+        loading_points:
+          - position: [27.0, 8.0, 0.0]
+            operation_time: 8.0
+          - position: [27.0, 12.0, 0.0]
+            operation_time: 6.0
+        storage_area: [20.0, 10.0, 0.0]
+        max_velocity: 3.0
+        acceleration: 1.2
+      behavior:
+        awareness_radius: 5.0
+        predictability: 0.95
+        priority: "high"
+        
+    - id: 6
+      type: "forklift"
+      classification: "forklift"
+      radius: 1.0
+      height: 2.5
+      mass: 2200.0
+      initial_position: [27.0, 20.0, 0.0]
+      motion_pattern:
+        type: "loading_cycle"
+        loading_points:
+          - position: [27.0, 18.0, 0.0]
+            operation_time: 7.0
+          - position: [27.0, 22.0, 0.0]
+            operation_time: 9.0
+        storage_area: [20.0, 20.0, 0.0]
+        max_velocity: 2.8
+        acceleration: 1.0
+      behavior:
+        awareness_radius: 4.5
+        predictability: 0.92
+        priority: "high"
+        
+    # Maintenance worker - unpredictable movement
+    - id: 7
+      type: "worker"
+      classification: "worker"
+      radius: 0.5
+      height: 1.8
+      mass: 80.0
+      initial_position: [15.0, 15.0, 0.0]
+      motion_pattern:
+        type: "maintenance_patrol"
+        inspection_points:
+          - position: [10.0, 10.0, 0.0]
+            inspection_time: 15.0
+          - position: [20.0, 10.0, 0.0]
+            inspection_time: 12.0
+          - position: [20.0, 20.0, 0.0]
+            inspection_time: 18.0
+          - position: [10.0, 20.0, 0.0]
+            inspection_time: 10.0
+        max_velocity: 1.0
+        tools_area: [15.0, 25.0, 0.0]
+      behavior:
+        awareness_radius: 3.0
+        predictability: 0.3  # Very unpredictable
+        
+    # Supervisor - crosses all areas
+    - id: 8
+      type: "worker"
+      classification: "worker"
+      radius: 0.5
+      height: 1.8
+      mass: 78.0
+      initial_position: [2.0, 15.0, 0.0]
+      motion_pattern:
+        type: "supervision_rounds"
+        supervision_areas:
+          - center: [6.0, 6.0, 0.0]
+            radius: 3.0
+            visit_time: 20.0
+          - center: [15.0, 6.0, 0.0]
+            radius: 3.0
+            visit_time: 15.0
+          - center: [24.0, 15.0, 0.0]
+            radius: 4.0
+            visit_time: 25.0
+          - center: [15.0, 24.0, 0.0]
+            radius: 3.0
+            visit_time: 18.0
+        office_location: [2.0, 28.0, 0.0]
+        max_velocity: 1.8
+      behavior:
+        awareness_radius: 4.0
+        predictability: 0.85
+        priority: "medium"
+        
+  # Scenario parameters
+  duration: 900.0  # seconds (15 minutes)
+  success_criteria:
+    goal_reached_tolerance: 0.2
+    time_limit: 180.0  # seconds per goal (much longer due to crowding)
+    collision_tolerance: 0
+    near_miss_tolerance: 10  # Allow more near misses in crowded scenario
+    
+  # Performance metrics to track
+  metrics:
+    - "path_length"
+    - "time_to_goal"
+    - "path_efficiency"
+    - "collision_count"
+    - "near_miss_count"
+    - "planning_time"
+    - "replanning_count"
+    - "obstacle_avoidance_time"
+    - "safety_override_count"
+    - "emergency_stop_count"
+    - "deadlock_count"
+    - "average_velocity"
+    - "velocity_variance"
+    
+  # Test goals sequence (challenging paths through crowded areas)
+  goal_sequence:
+    - position: [28.0, 28.0, 0.0]
+      timeout: 180.0
+      description: "Navigate to far corner through busy loading area"
+    - position: [6.0, 6.0, 0.0]
+      timeout: 180.0
+      description: "Return to worker area during shift change"
+    - position: [15.0, 28.0, 0.0]
+      timeout: 180.0
+      description: "Cross to opposite side through central corridor"
+    - position: [28.0, 15.0, 0.0]
+      timeout: 180.0
+      description: "Navigate to loading dock area"
+    - position: [2.0, 2.0, 0.0]
+      timeout: 180.0
+      description: "Return to start through all work areas"
+      
+  # Special events during scenario
+  events:
+    - time: 120.0
+      type: "shift_change"
+      description: "Workers move to break area simultaneously"
+      
+    - time: 300.0
+      type: "equipment_breakdown"
+      description: "One forklift stops for maintenance"
+      affected_obstacle_id: 5
+      duration: 60.0
+      
+    - time: 450.0
+      type: "rush_delivery"
+      description: "All forklifts increase speed temporarily"
+      duration: 90.0
+      speed_multiplier: 1.5

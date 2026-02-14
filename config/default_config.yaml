@@ -1,0 +1,130 @@
+# AdaptNav Default Configuration
+# This file contains default parameters for all AdaptNav nodes
+
+# Global parameters
+use_sim_time: true
+robot_radius: 0.3  # meters
+max_linear_velocity: 1.0  # m/s
+max_angular_velocity: 0.5  # rad/s
+
+# Simulation parameters
+simulation:
+  physics_timestep: 0.001  # seconds
+  control_timestep: 0.05   # seconds (20 Hz)
+  real_time_factor: 1.0
+  
+# Sensor parameters
+sensors:
+  lidar:
+    frequency: 20.0  # Hz
+    range_min: 0.1   # meters
+    range_max: 10.0  # meters
+    angle_min: -3.14159  # radians (-180 degrees)
+    angle_max: 3.14159   # radians (180 degrees)
+    angle_increment: 0.017453  # radians (1 degree)
+    noise_std: 0.01  # meters
+    
+  depth_camera:
+    frequency: 15.0  # Hz
+    width: 640
+    height: 480
+    fov: 1.5708  # radians (90 degrees)
+    range_min: 0.5   # meters
+    range_max: 5.0   # meters
+    noise_std: 0.02  # meters
+
+# Obstacle detection parameters
+obstacle_detection:
+  clustering:
+    eps: 0.3  # DBSCAN epsilon parameter (meters)
+    min_samples: 3  # DBSCAN minimum samples
+    max_cluster_size: 100  # Maximum points per cluster
+    
+  tracking:
+    max_tracking_distance: 2.0  # meters
+    track_timeout: 2.0  # seconds
+    velocity_smoothing_alpha: 0.3  # Exponential smoothing factor
+    
+  classification:
+    worker_radius_min: 0.3  # meters
+    worker_radius_max: 0.7  # meters
+    forklift_radius_min: 0.8  # meters
+    forklift_radius_max: 1.5  # meters
+    velocity_threshold_worker: 2.0  # m/s
+    velocity_threshold_forklift: 5.0  # m/s
+
+# Global planner parameters
+global_planner:
+  algorithm: "astar"
+  grid_resolution: 0.1  # meters per cell
+  planning_timeout: 2.0  # seconds
+  path_smoothing: true
+  smoothing_iterations: 10
+  obstacle_inflation_radius: 0.2  # meters
+  
+# PPO agent parameters
+ppo_agent:
+  model_path: "models/ppo_navigation_model.zip"
+  observation_dim: 372
+  action_dim: 2
+  inference_timeout: 0.05  # seconds (50ms)
+  
+  # Observation normalization
+  lidar_range_max: 10.0
+  goal_distance_max: 20.0
+  velocity_max: 1.0
+  
+# Safety controller parameters
+safety_controller:
+  collision_zone_radius: 0.5  # meters
+  emergency_stop_radius: 0.3  # meters
+  clearance_time: 1.0  # seconds
+  deceleration_factor: 0.5
+  prediction_time: 0.5  # seconds
+  
+  # Velocity limits
+  max_linear_velocity: 1.0  # m/s
+  max_angular_velocity: 0.5  # rad/s
+  
+# Navigation controller parameters
+navigation_controller:
+  goal_tolerance: 0.2  # meters
+  velocity_tolerance: 0.1  # m/s
+  replanning_frequency: 1.0  # Hz
+  replanning_distance_threshold: 0.5  # meters
+  
+  # State machine timeouts
+  planning_timeout: 5.0  # seconds
+  execution_timeout: 60.0  # seconds
+  
+# Hybrid navigation parameters
+hybrid_navigation:
+  lookahead_distance: 2.0  # meters
+  pure_pursuit_gain: 1.0
+  obstacle_avoidance_threshold: 1.5  # meters
+  blend_distance: 3.0  # meters
+  
+# Visualization parameters
+visualization:
+  rviz:
+    update_frequency: 10.0  # Hz
+    marker_lifetime: 0.5  # seconds
+    
+  web_dashboard:
+    websocket_port: 8765
+    websocket_host: "localhost"
+    update_frequency: 10.0  # Hz
+    
+# Performance monitoring
+performance:
+  enable_timing: true
+  log_frequency: 1.0  # Hz
+  latency_warning_threshold: 0.1  # seconds
+  frequency_warning_threshold: 0.8  # fraction of target frequency
+
+# Logging configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARN, ERROR
+  console_output: true
+  file_output: false
+  log_directory: "logs/"

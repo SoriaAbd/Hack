@@ -1,0 +1,166 @@
+# Benchmark Medium Demonstration Scenario
+# Moderate complexity navigation with multiple obstacles
+
+demo_scenario:
+  name: "Benchmark Medium"
+  description: "Medium complexity navigation with multiple dynamic obstacles"
+  category: "benchmark"
+  difficulty: "medium"
+  estimated_duration: 300  # seconds (5 minutes)
+  
+  # Environment configuration
+  environment:
+    warehouse_layout: "medium_warehouse.yaml"
+    obstacle_scenario: "multi_obstacle.yaml"
+    
+  # Robot starting configuration
+  robot_start:
+    position: [2.0, 2.0, 0.0]
+    orientation: [0.0, 0.0, 0.0, 1.0]  # quaternion (facing +x)
+    
+  # Demonstration goals sequence
+  goals:
+    - id: 1
+      position: [28.0, 28.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 90.0
+      description: "Navigate across warehouse diagonal"
+      showcase_features:
+        - "long_distance_planning"
+        - "multi_obstacle_avoidance"
+        - "corridor_navigation"
+        
+    - id: 2
+      position: [15.0, 28.0, 0.0]
+      orientation: [0.0, 0.0, -1.5708, 0.0]  # facing -y
+      timeout: 60.0
+      description: "Move to central corridor"
+      showcase_features:
+        - "replanning_with_multiple_obstacles"
+        - "forklift_avoidance"
+        - "priority_handling"
+        
+    - id: 3
+      position: [28.0, 15.0, 0.0]
+      orientation: [0.0, 0.0, 1.5708, 0.0]  # facing +y
+      timeout: 75.0
+      description: "Navigate to loading area"
+      showcase_features:
+        - "high_traffic_area_navigation"
+        - "predictive_obstacle_avoidance"
+        - "safety_override_demonstration"
+        
+    - id: 4
+      position: [2.0, 15.0, 0.0]
+      orientation: [0.0, 0.0, 3.14159, 0.0]  # facing -x
+      timeout: 60.0
+      description: "Cross to opposite side"
+      showcase_features:
+        - "cross_traffic_navigation"
+        - "worker_interaction"
+        
+    - id: 5
+      position: [2.0, 2.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 45.0
+      description: "Return to start position"
+      showcase_features:
+        - "return_navigation"
+        - "path_optimization"
+  
+  # Success criteria for demonstration
+  success_criteria:
+    goal_tolerance: 0.2  # meters
+    orientation_tolerance: 0.3  # radians
+    collision_tolerance: 0  # No collisions allowed
+    near_miss_tolerance: 3  # Allow some near misses
+    time_efficiency_threshold: 0.7  # 70% of optimal time
+    
+  # Key performance indicators to highlight
+  kpis:
+    - name: "Success Rate"
+      target: ">= 90%"
+      description: "Percentage of goals reached successfully"
+      
+    - name: "Path Efficiency"
+      target: ">= 75%"
+      description: "Actual path length vs optimal path length"
+      
+    - name: "Safety Events"
+      target: "= 0"
+      description: "Number of collisions or safety violations"
+      
+    - name: "Obstacle Avoidance"
+      target: ">= 95%"
+      description: "Successful obstacle avoidance rate"
+      
+    - name: "Replanning Efficiency"
+      target: "<= 3 replans per goal"
+      description: "Number of path replanning events"
+      
+  # Demonstration script for presentation
+  presentation:
+    intro_text: "This demonstration showcases AdaptNav's ability to handle multiple dynamic obstacles including workers and forklifts in a medium-sized warehouse."
+    
+    highlights:
+      - timestamp: 15.0
+        text: "Robot navigates around multiple workers using sensor fusion"
+        camera_focus: "multi_obstacle_avoidance"
+        
+      - timestamp: 45.0
+        text: "PPO agent learns to give priority to forklift traffic"
+        camera_focus: "forklift_interaction"
+        
+      - timestamp: 90.0
+        text: "Safety controller prevents collision with crossing worker"
+        camera_focus: "safety_intervention"
+        
+      - timestamp: 150.0
+        text: "System replans route when main corridor becomes blocked"
+        camera_focus: "dynamic_replanning"
+        
+      - timestamp: 210.0
+        text: "Hybrid navigation combines global planning with local RL control"
+        camera_focus: "hybrid_navigation"
+        
+      - timestamp: 270.0
+        text: "Robot efficiently returns to start despite changing obstacle patterns"
+        camera_focus: "adaptive_navigation"
+        
+    outro_text: "AdaptNav successfully demonstrated robust navigation in a complex multi-obstacle environment while maintaining safety and efficiency."
+    
+  # Camera positions for optimal viewing
+  camera_positions:
+    overview:
+      position: [15.0, 15.0, 25.0]
+      target: [15.0, 15.0, 0.0]
+      description: "Full warehouse overview"
+      
+    corridor_view:
+      position: [15.0, 5.0, 12.0]
+      target: [15.0, 15.0, 0.0]
+      description: "Main corridor navigation view"
+      
+    loading_area:
+      position: [25.0, 15.0, 10.0]
+      target: [28.0, 15.0, 0.0]
+      description: "Loading area with forklift activity"
+      
+    cross_traffic:
+      position: [8.0, 15.0, 8.0]
+      target: [15.0, 15.0, 0.0]
+      description: "Cross-traffic intersection view"
+      
+  # Special events during demonstration
+  events:
+    - timestamp: 60.0
+      type: "highlight_safety"
+      description: "Demonstrate emergency stop when worker suddenly appears"
+      
+    - timestamp: 120.0
+      type: "show_replanning"
+      description: "Trigger replanning by blocking main path"
+      
+    - timestamp: 180.0
+      type: "forklift_priority"
+      description: "Show how robot yields to forklift traffic"

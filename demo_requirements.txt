@@ -1,0 +1,9 @@
+# Minimal requirements for running the AdaptNav demo
+numpy>=1.20.0
+matplotlib>=3.5.0
+
+# Optional: For full features
+# rclpy>=3.0.0
+# geometry_msgs
+# sensor_msgs
+# nav_msgs

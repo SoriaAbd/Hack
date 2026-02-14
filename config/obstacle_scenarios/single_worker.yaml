@@ -1,0 +1,73 @@
+# Single Worker Obstacle Scenario
+# One moving worker in the warehouse
+
+scenario:
+  name: "Single Worker"
+  description: "Navigation with one moving worker obstacle"
+  difficulty: "easy"
+  
+  # Dynamic obstacles configuration
+  dynamic_obstacles:
+    - id: 1
+      type: "worker"
+      classification: "worker"
+      
+      # Physical properties
+      radius: 0.5  # meters
+      height: 1.8  # meters
+      mass: 70.0   # kg
+      
+      # Initial state
+      initial_position: [5.0, 5.0, 0.0]
+      initial_velocity: [0.0, 0.0, 0.0]
+      initial_orientation: [0.0, 0.0, 0.0, 1.0]
+      
+      # Motion pattern
+      motion_pattern:
+        type: "waypoint_following"
+        waypoints:
+          - position: [5.0, 5.0, 0.0]
+            dwell_time: 2.0
+          - position: [8.0, 5.0, 0.0]
+            dwell_time: 1.0
+          - position: [8.0, 8.0, 0.0]
+            dwell_time: 2.0
+          - position: [5.0, 8.0, 0.0]
+            dwell_time: 1.0
+        loop: true
+        max_velocity: 1.2  # m/s
+        acceleration: 0.5  # m/s²
+        
+      # Behavior parameters
+      behavior:
+        awareness_radius: 3.0  # meters
+        avoidance_behavior: "simple"  # simple, predictive, reactive
+        predictability: 0.8  # 0.0 = random, 1.0 = perfectly predictable
+        
+  # Scenario parameters
+  duration: 300.0  # seconds (5 minutes)
+  success_criteria:
+    goal_reached_tolerance: 0.2  # meters
+    time_limit: 90.0  # seconds per goal (longer due to obstacle)
+    collision_tolerance: 0  # No collisions allowed
+    
+  # Performance metrics to track
+  metrics:
+    - "path_length"
+    - "time_to_goal"
+    - "path_efficiency"
+    - "collision_count"
+    - "near_miss_count"
+    - "planning_time"
+    - "obstacle_avoidance_time"
+    
+  # Test goals sequence
+  goal_sequence:
+    - position: [9.0, 9.0, 0.0]
+      timeout: 90.0
+    - position: [1.0, 9.0, 0.0]
+      timeout: 90.0
+    - position: [9.0, 1.0, 0.0]
+      timeout: 90.0
+    - position: [1.0, 1.0, 0.0]
+      timeout: 90.0

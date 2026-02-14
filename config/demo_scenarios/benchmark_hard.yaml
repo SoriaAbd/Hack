@@ -1,0 +1,233 @@
+# Benchmark Hard Demonstration Scenario
+# Complex navigation through crowded warehouse with narrow passages
+
+demo_scenario:
+  name: "Benchmark Hard"
+  description: "Complex navigation through crowded warehouse with challenging obstacles"
+  category: "benchmark"
+  difficulty: "hard"
+  estimated_duration: 600  # seconds (10 minutes)
+  
+  # Environment configuration
+  environment:
+    warehouse_layout: "complex_warehouse.yaml"
+    obstacle_scenario: "crowded.yaml"
+    
+  # Robot starting configuration
+  robot_start:
+    position: [2.0, 2.0, 0.0]
+    orientation: [0.0, 0.0, 0.0, 1.0]  # quaternion (facing +x)
+    
+  # Demonstration goals sequence (challenging navigation tasks)
+  goals:
+    - id: 1
+      position: [48.0, 48.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 150.0
+      description: "Navigate to far corner through dense obstacle field"
+      showcase_features:
+        - "complex_path_planning"
+        - "dense_obstacle_navigation"
+        - "long_distance_planning"
+        - "multiple_replanning_events"
+        
+    - id: 2
+      position: [12.5, 2.5, 0.0]
+      orientation: [0.0, 0.0, 1.5708, 0.0]  # facing +y
+      timeout: 120.0
+      description: "Navigate through narrow passage"
+      showcase_features:
+        - "narrow_passage_navigation"
+        - "precision_control"
+        - "clearance_monitoring"
+        - "speed_adaptation"
+        
+    - id: 3
+      position: [47.0, 25.0, 0.0]
+      orientation: [0.0, 0.0, 3.14159, 0.0]  # facing -x
+      timeout: 180.0
+      description: "Navigate to busy loading dock area"
+      showcase_features:
+        - "high_traffic_navigation"
+        - "forklift_coordination"
+        - "priority_based_navigation"
+        - "deadlock_avoidance"
+        
+    - id: 4
+      position: [5.0, 45.0, 0.0]
+      orientation: [0.0, 0.0, -1.5708, 0.0]  # facing -y
+      timeout: 120.0
+      description: "Navigate to office area through worker zones"
+      showcase_features:
+        - "worker_dense_area_navigation"
+        - "social_navigation"
+        - "predictive_avoidance"
+        
+    - id: 5
+      position: [25.0, 25.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 90.0
+      description: "Navigate to central intersection"
+      showcase_features:
+        - "intersection_navigation"
+        - "multi_directional_traffic"
+        - "conflict_resolution"
+        
+    - id: 6
+      position: [2.0, 2.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]
+      timeout: 120.0
+      description: "Return to start through all challenge areas"
+      showcase_features:
+        - "complete_system_demonstration"
+        - "adaptive_route_selection"
+        - "learned_behavior_application"
+  
+  # Success criteria for demonstration (more lenient due to difficulty)
+  success_criteria:
+    goal_tolerance: 0.3  # meters (slightly larger due to precision challenges)
+    orientation_tolerance: 0.5  # radians
+    collision_tolerance: 0  # Still no collisions allowed
+    near_miss_tolerance: 8  # Allow more near misses in crowded scenario
+    time_efficiency_threshold: 0.6  # 60% of optimal time (challenging environment)
+    
+  # Key performance indicators to highlight
+  kpis:
+    - name: "Success Rate"
+      target: ">= 80%"
+      description: "Percentage of goals reached successfully"
+      
+    - name: "Path Efficiency"
+      target: ">= 65%"
+      description: "Actual path length vs optimal path length"
+      
+    - name: "Safety Events"
+      target: "= 0"
+      description: "Number of collisions or safety violations"
+      
+    - name: "Narrow Passage Success"
+      target: "100%"
+      description: "Successfully navigate through narrow passages"
+      
+    - name: "Deadlock Avoidance"
+      target: "100%"
+      description: "Avoid getting stuck in deadlock situations"
+      
+    - name: "Emergency Stops"
+      target: "<= 5"
+      description: "Number of emergency stop events"
+      
+    - name: "Replanning Events"
+      target: "<= 8 per goal"
+      description: "Adaptive replanning in dynamic environment"
+      
+  # Demonstration script for presentation
+  presentation:
+    intro_text: "This challenging demonstration showcases AdaptNav's advanced capabilities in a crowded warehouse environment with narrow passages, multiple forklifts, and unpredictable worker movements."
+    
+    highlights:
+      - timestamp: 30.0
+        text: "Robot begins complex path planning through dense obstacle field"
+        camera_focus: "complex_planning"
+        
+      - timestamp: 90.0
+        text: "PPO agent demonstrates learned social navigation behaviors"
+        camera_focus: "social_navigation"
+        
+      - timestamp: 180.0
+        text: "Precision navigation through narrow passage with clearance monitoring"
+        camera_focus: "narrow_passage"
+        
+      - timestamp: 270.0
+        text: "Coordinated navigation in busy loading dock with multiple forklifts"
+        camera_focus: "forklift_coordination"
+        
+      - timestamp: 360.0
+        text: "Adaptive behavior in worker-dense office area"
+        camera_focus: "worker_interaction"
+        
+      - timestamp: 450.0
+        text: "Multi-directional traffic management at central intersection"
+        camera_focus: "intersection_management"
+        
+      - timestamp: 540.0
+        text: "System demonstrates learned behaviors on return journey"
+        camera_focus: "learned_adaptation"
+        
+    outro_text: "AdaptNav successfully demonstrated advanced autonomous navigation capabilities in the most challenging warehouse environment, showcasing robust safety, efficiency, and adaptability."
+    
+  # Camera positions for optimal viewing
+  camera_positions:
+    overview:
+      position: [25.0, 25.0, 40.0]
+      target: [25.0, 25.0, 0.0]
+      description: "Full complex warehouse overview"
+      
+    narrow_passage:
+      position: [12.5, 8.0, 5.0]
+      target: [12.5, 2.5, 0.0]
+      description: "Narrow passage navigation view"
+      
+    loading_dock:
+      position: [42.0, 25.0, 15.0]
+      target: [47.0, 25.0, 0.0]
+      description: "Busy loading dock area"
+      
+    office_area:
+      position: [8.0, 45.0, 12.0]
+      target: [5.0, 45.0, 0.0]
+      description: "Office area with worker activity"
+      
+    central_intersection:
+      position: [25.0, 30.0, 20.0]
+      target: [25.0, 25.0, 0.0]
+      description: "Central intersection traffic view"
+      
+    dense_obstacles:
+      position: [35.0, 35.0, 18.0]
+      target: [40.0, 40.0, 0.0]
+      description: "Dense obstacle field navigation"
+      
+  # Special events during demonstration
+  events:
+    - timestamp: 120.0
+      type: "shift_change_simulation"
+      description: "Simulate shift change with multiple workers moving simultaneously"
+      
+    - timestamp: 240.0
+      type: "forklift_convoy"
+      description: "Multiple forklifts create temporary corridor blockage"
+      
+    - timestamp: 300.0
+      type: "maintenance_activity"
+      description: "Maintenance worker creates unpredictable movement pattern"
+      
+    - timestamp: 420.0
+      type: "rush_hour_simulation"
+      description: "Increase all obstacle movement speeds to simulate rush period"
+      
+    - timestamp: 480.0
+      type: "emergency_clearance"
+      description: "Demonstrate emergency path clearance behavior"
+      
+  # Challenge-specific metrics
+  challenge_metrics:
+    narrow_passage_clearance:
+      description: "Minimum clearance maintained in narrow passages"
+      target: ">= 0.1m"
+      
+    forklift_interaction_safety:
+      description: "Safety distance maintained from forklifts"
+      target: ">= 1.5m"
+      
+    worker_comfort_distance:
+      description: "Comfortable distance maintained from workers"
+      target: ">= 1.0m"
+      
+    deadlock_resolution_time:
+      description: "Time to resolve potential deadlock situations"
+      target: "<= 10s"
+      
+    adaptive_speed_control:
+      description: "Speed adaptation in crowded areas"
+      target: "0.3-0.8 m/s range"

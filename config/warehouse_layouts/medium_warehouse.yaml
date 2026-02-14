@@ -1,0 +1,88 @@
+# Medium Warehouse Layout Configuration
+# 30m x 30m warehouse with moderate obstacles
+
+warehouse:
+  name: "Medium Warehouse"
+  dimensions:
+    width: 30.0   # meters
+    height: 30.0  # meters
+    
+  # Map resolution for occupancy grid
+  resolution: 0.1  # meters per pixel
+  
+  # Origin point (bottom-left corner)
+  origin: [0.0, 0.0, 0.0]
+  
+  # Static obstacles (walls, shelves, columns)
+  static_obstacles:
+    # Outer walls
+    - type: "wall"
+      points: [[0.0, 0.0], [30.0, 0.0], [30.0, 30.0], [0.0, 30.0], [0.0, 0.0]]
+      thickness: 0.3
+      
+    # Shelf rows
+    - type: "shelf_row"
+      center: [7.5, 15.0]
+      width: 12.0
+      height: 1.5
+      orientation: 0.0
+      
+    - type: "shelf_row"
+      center: [22.5, 15.0]
+      width: 12.0
+      height: 1.5
+      orientation: 0.0
+      
+    # Cross aisles
+    - type: "shelf_row"
+      center: [15.0, 7.5]
+      width: 1.5
+      height: 12.0
+      orientation: 1.5708  # 90 degrees
+      
+    - type: "shelf_row"
+      center: [15.0, 22.5]
+      width: 1.5
+      height: 12.0
+      orientation: 1.5708  # 90 degrees
+      
+    # Support columns
+    - type: "column"
+      center: [10.0, 10.0]
+      radius: 0.3
+      
+    - type: "column"
+      center: [20.0, 10.0]
+      radius: 0.3
+      
+    - type: "column"
+      center: [10.0, 20.0]
+      radius: 0.3
+      
+    - type: "column"
+      center: [20.0, 20.0]
+      radius: 0.3
+      
+  # Spawn points for robot and obstacles
+  spawn_points:
+    robot:
+      position: [2.0, 2.0, 0.0]
+      orientation: [0.0, 0.0, 0.0, 1.0]  # quaternion
+      
+    goal_positions:
+      - [28.0, 28.0, 0.0]
+      - [28.0, 2.0, 0.0]
+      - [2.0, 28.0, 0.0]
+      - [15.0, 28.0, 0.0]
+      - [28.0, 15.0, 0.0]
+      
+  # Free space regions for navigation
+  free_space_regions:
+    - name: "main_corridors"
+      bounds: [[1.0, 1.0], [29.0, 29.0]]
+    - name: "central_area"
+      bounds: [[12.0, 12.0], [18.0, 18.0]]
+      
+# Occupancy grid file (if using pre-generated map)
+map_file: "maps/medium_warehouse.pgm"
+map_metadata_file: "maps/medium_warehouse.yaml"
