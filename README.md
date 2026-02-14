@@ -44,9 +44,22 @@ AdaptNav demonstrates a realistic robotics stack designed for warehouse navigati
 - **👁️ Sensor Fusion**: LiDAR and depth camera integration for comprehensive environment perception  
 - **🧠 Reinforcement Learning**: PPO-based adaptive navigation for complex scenarios
 - **📊 Real-time Visualization**: Web dashboard and RViz integration for monitoring
+- **🌐 Interactive Web Demo**: Streamlit-based web interface for easy demonstration
 - **🛡️ Safety Systems**: Multi-layered safety controllers for collision avoidance
 - **🔧 Modular Architecture**: Easy to extend and customize for different warehouse layouts
 - **🐛 Debug Tools**: Comprehensive troubleshooting and movement verification
+
+## 🌐 Web Demo
+
+The AdaptNav system includes an interactive web demo built with Streamlit:
+
+- **Live Visualization**: Watch the robot navigate in real-time
+- **Interactive Controls**: Step through or auto-run the simulation
+- **Metrics Dashboard**: Track position, velocity, and navigation progress
+- **Browser-Based**: No installation needed for viewers
+- **Easy Deployment**: Deploy to Streamlit Cloud in minutes
+
+See [STREAMLIT_DEPLOYMENT.md](STREAMLIT_DEPLOYMENT.md) for deployment instructions.
 
 ## 🔧 Recent Fixes
 
@@ -69,6 +82,7 @@ AdaptNav demonstrates a realistic robotics stack designed for warehouse navigati
 
 - Python 3.8+
 - NumPy, Matplotlib (for demo)
+- Streamlit (for web demo)
 - ROS 2 (optional, for full features)
 
 ### Installation
@@ -81,11 +95,32 @@ cd Hack
 # Install demo dependencies
 pip install numpy matplotlib
 
+# Install Streamlit for web demo
+pip install streamlit
+
 # For full features (optional)
 pip install -r requirements.txt
 ```
 
 ### 🎯 Running the Demo
+
+#### Web Demo (Recommended for Hackathons!)
+
+```bash
+# Run the interactive web demo
+streamlit run streamlit_app.py
+
+# Or use the launcher scripts
+python run_streamlit.py        # Cross-platform
+./run_streamlit.sh            # Linux/Mac
+run_streamlit.bat             # Windows
+```
+
+The web demo will open in your browser at `http://localhost:8501`
+
+**🌐 Live Demo URL**: [Deploy to Streamlit Cloud](STREAMLIT_DEPLOYMENT.md) for a public URL!
+
+#### Desktop Demo
 
 ```bash
 # 1. Run the main demo (visual simulation)
